@@ -1,0 +1,15 @@
+import app.pay.buildsrc.Libs
+
+apply plugin: 'kotlin'
+
+dependencies {
+    api Libs.Kotlin.stdlib
+
+    api Libs.Coroutines.core
+    api Libs.Coroutines.rx2
+
+    api Libs.Dagger.dagger
+
+    implementation Libs.Retrofit.retrofit
+
+}

@@ -1,0 +1,123 @@
+import app.pay.buildsrc.Libs
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.payapp.main"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        multiDexEnabled true
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_KEY", "\"" + propOrDef("API_KEY", "") + "\""
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        pickFirst 'mockito-extensions/org.mockito.plugins.MockMaker'
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+}
+
+dependencies {
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.Kotlin.reflect
+
+    implementation project(":core")
+
+    implementation Libs.AndroidX.coreKtx
+    implementation Libs.AndroidX.constraintlayout
+    implementation Libs.AndroidX.recyclerview
+    implementation Libs.AndroidX.appcompat
+
+
+    implementation Libs.RxJava.rxJava
+    implementation Libs.RxJava.rxKotlin
+    implementation Libs.RxJava.rxAndroid
+
+
+    implementation Libs.AndroidX.Lifecycle.viewmodel
+    implementation Libs.AndroidX.Lifecycle.extensions
+    implementation Libs.AndroidX.multidex
+
+
+    implementation Libs.Coroutines.core
+    implementation Libs.Coroutines.rx2
+    implementation Libs.Coroutines.android
+
+
+    implementation Libs.Dagger.androidSupport
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt Libs.Dagger.compiler
+    kapt Libs.Dagger.androidProcessor
+
+    kaptAndroidTest Libs.Dagger.androidProcessor
+
+
+    implementation Libs.OkHttp.loggingInterceptor
+    implementation Libs.OkHttp.okhttp
+
+    implementation Libs.PlayServices.location
+
+    implementation Libs.Retrofit.gsonConverter
+
+    // Test dependencies
+
+    androidTestImplementation("$Libs.MockServer.okhttp3Idlin") {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+
+
+    //mockito
+    androidTestImplementation Libs.Mockito.mockitoAndroid
+    androidTestImplementation Libs.Mockito.mockitoKotlin
+    testImplementation Libs.Mockito.mockitoKotlin
+
+
+    testImplementation Libs.androidXTest.archCoreTesing
+
+    //mockwebserver
+    androidTestImplementation("$Libs.MockServer.mockWebServer") {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+
+
+    testImplementation Libs.jUnit.junit
+
+    androidTestImplementation Libs.Espresso.espressoContrib
+    androidTestImplementation Libs.Espresso.espressoCore
+
+    androidTestImplementation Libs.androidXTest.core
+    androidTestImplementation Libs.androidXTest.runner
+    androidTestImplementation Libs.androidXTest.rules
+
+    androidTestImplementation Libs.coroutineTest.coroutinesTest
+    testImplementation Libs.coroutineTest.coroutinesTest
+
+
+}

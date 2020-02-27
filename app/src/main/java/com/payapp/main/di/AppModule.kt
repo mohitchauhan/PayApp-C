@@ -3,6 +3,7 @@ package com.payapp.main.di
 import android.content.Context
 import com.android.pay.core.utils.AppCoroutineDispatchers
 import com.android.pay.core.utils.AppRxSchedulers
+import com.google.gson.Gson
 import com.payapp.main.BuildConfig
 import com.payapp.main.PayApp
 import dagger.Module
@@ -39,6 +40,9 @@ class AppModule {
         main = Dispatchers.Main
     )
 
+    @Provides
+    @Singleton
+    fun provideGson(): Gson = Gson()
 
 
     @Provides

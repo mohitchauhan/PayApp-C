@@ -7,13 +7,6 @@ import androidx.annotation.LayoutRes
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
 
-    @LayoutRes
-    abstract fun layoutRes(): Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(layoutRes())
-
-    }
 
 }

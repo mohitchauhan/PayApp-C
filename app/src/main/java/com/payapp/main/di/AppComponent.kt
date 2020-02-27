@@ -1,7 +1,7 @@
 package com.payapp.main.di
 
 import com.payapp.main.PayApp
-import com.payapp.main.ui.login.LoginDiModule
+import com.payapp.main.ui.oauth.onboarding.OnboardingDiModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [AndroidSupportInjectionModule::class,
-    LoginDiModule::class,
+    OnboardingDiModule::class,
     AppModule::class,
     NetworkModule::class
 ])

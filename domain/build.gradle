@@ -33,6 +33,7 @@ dependencies {
     implementation project(":and-data")
     implementation Libs.Kotlin.stdlib
     implementation Libs.Kotlin.reflect
+    implementation Libs.Dagger.dagger
     implementation Libs.Retrofit.gsonConverter
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

@@ -8,7 +8,7 @@ import java.util.regex.Pattern
 import javax.inject.Inject
 import timber.log.Timber
 
-class TiviLogger @Inject constructor() : Logger {
+class PayLogger @Inject constructor() : Logger {
     fun setup(debugMode: Boolean) {
         if (debugMode) {
             Timber.plant(TiviDebugTree())

@@ -1,5 +1,6 @@
 package com.payapp.interactors
 
+import com.android.pay.core.Logger
 import com.android.pay.core.PayAPIException
 import com.android.pay.core.data.entities.ErrorResult
 import com.android.pay.core.data.entities.State
@@ -12,7 +13,8 @@ import com.payapp.data.entities.LoginResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
-class UserLogin @Inject constructor(private val loginRepository : LoginRepository, private val prefDataSource : PrefDataSource, private val gson: Gson, dispatchers: AppCoroutineDispatchers) : ResultInteractor<UserLogin.Params, State<LoginResponse>>(){
+class UserLogin @Inject constructor(private val loginRepository : LoginRepository, private val prefDataSource : PrefDataSource, private val gson: Gson, dispatchers: AppCoroutineDispatchers, private val logger: Logger
+) : ResultInteractor<UserLogin.Params, State<LoginResponse>>(){
     override val dispatcher: CoroutineDispatcher = dispatchers.io
 
     override suspend fun doWork(params: Params): State<LoginResponse> {
@@ -30,7 +32,7 @@ class UserLogin @Inject constructor(private val loginRepository : LoginRepositor
                 return ErrorResult(PayAPIException("Something went wrong!!"), "Error occurred")
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            logger.e(e)
             return ErrorResult(e, "Error occurred")
         }
     }

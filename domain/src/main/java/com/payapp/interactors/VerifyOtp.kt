@@ -1,5 +1,6 @@
 package com.payapp.interactors
 
+import com.android.pay.core.Logger
 import com.android.pay.core.PayAPIException
 import com.android.pay.core.data.entities.ErrorResult
 import com.android.pay.core.data.entities.State
@@ -13,7 +14,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 class VerifyOtp @Inject constructor(private val signupRepository : SignupRepository, private val prefDataSource : PrefDataSource, private val gson: Gson,
-                                    dispatchers: AppCoroutineDispatchers) : ResultInteractor<VerifyOtp.Params, State<LoginResponse>>(){
+                                    dispatchers: AppCoroutineDispatchers, private val logger: Logger
+) : ResultInteractor<VerifyOtp.Params, State<LoginResponse>>(){
     override val dispatcher: CoroutineDispatcher = dispatchers.io
 
     override suspend fun doWork(params: Params): State<LoginResponse> {
@@ -31,7 +33,7 @@ class VerifyOtp @Inject constructor(private val signupRepository : SignupReposit
                 return ErrorResult(PayAPIException("Something went wrong!!"), "Error occurred")
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            logger.e(e)
             return ErrorResult(e, "Error occurred")
         }
     }

@@ -3,6 +3,8 @@ import app.pay.buildsrc.Libs
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 29
@@ -33,5 +35,7 @@ dependencies {
     api Libs.Coroutines.core
     implementation Libs.Kotlin.reflect
     api Libs.timber
-
+    implementation Libs.Dagger.dagger
+    implementation Libs.Retrofit.gsonConverter
+    implementation Libs.Retrofit.retrofit
 }

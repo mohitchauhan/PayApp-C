@@ -17,13 +17,12 @@
 package com.payapp.main.initializers
 
 import android.app.Application
-import app.tivi.BuildConfig
-import app.tivi.util.TiviLogger
+import com.android.pay.core.utils.PayLogger
 import com.payapp.main.BuildConfig
 import javax.inject.Inject
 
 class TimberInitializer @Inject constructor(
-    private val tiviLogger: TiviLogger
+    private val logger : PayLogger
 ) : AppInitializer {
-    override fun init(application: Application) = tiviLogger.setup(BuildConfig.DEBUG)
+    override fun init(application: Application) = logger.setup(BuildConfig.DEBUG)
 }

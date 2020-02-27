@@ -1,12 +1,33 @@
 <resources>
-    <string name="app_name">PayApp</string>
+    <string name="app_name">Noon Pay</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_phone">Phone Number</string>
+    <string name="prompt_email">Email(Optional)</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_continue">Continue</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_number">Not a valid phone number, must be >10 chars</string>
     <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_email">Not a valid email</string>
+
     <string name="login_failed">"Login failed"</string>
+    <string name="text_tnc"><![CDATA[By checking this you are greeting to noon pay Terms & Conditions]]></string>
+    <string name="action_signUp">New to NoonPay? Sign Up</string>
+    <string name="action_signin">Already have an account? Sign In</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_btn_signIn">Sign In</string>
+    <string name="msg_otp_sent">We have sent a 4 digit code to your phone number %s</string>
+    <string name="action_submit">Submit Code</string>
+    <string name="network_error">Unable to connect, Please try again</string>
+    <string name="something_went_wrong">Something went wrong please try again</string>
+    <string name="loading">Loading</string>
+    <string name="submitting">Submitting</string>
+    <string name="accept_tnc"><![CDATA[Please accept Terms & Conditions]]></string>
+    <string name="title_login">Login</string>
+    <string name="title_signup">Sign Up</string>
+    <string name="title_verify_otp">Verify your mobile</string>
 </resources>

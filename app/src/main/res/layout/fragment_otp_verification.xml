@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.oauth.onboarding.register.OtpVerificationFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:id="@+id/msgOtpSent"
+        tools:text="@string/msg_otp_sent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="80dp"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.mukesh.OtpView
+        android:id="@+id/otpView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msgOtpSent"
+        android:layout_marginTop="72dp"
+        android:inputType="number"
+        android:textColor="@color/colorPrimary"
+        app:itemCount="4"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        app:itemSpacing = "30dp"
+        app:lineColor="@color/colorPrimary"
+        app:viewType="line" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        style="@style/DefaultButtonStyle"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="48dp"
+        android:enabled="false"
+        android:minWidth="@dimen/defaultBtnWidth"
+        android:text="@string/action_submit"
+        android:textColor="@color/stateful_text_color"
+        app:backgroundTint="@color/blueGrey"
+        app:layout_constraintTop_toBottomOf="@+id/otpView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

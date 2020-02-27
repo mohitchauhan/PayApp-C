@@ -1,4 +1,4 @@
-package com.payapp.main.ui.login
+package com.payapp.main.ui.oauth.login
 
 /**
  * Data validation state of the login form.

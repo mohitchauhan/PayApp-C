@@ -74,7 +74,7 @@ class OtpVerificationFragment : BaseFragment() {
         otpViewModel.validateOtpState.observe(this as LifecycleOwner, Observer {
             when(it) {
                 is Success<LoginResponse> -> {
-                    callbacks.otpVerified(it.data.loggedInUser!!)
+                    callbacks.openHome(it.data.loggedInUser!!)
                 }
                 is ErrorResult -> {
                     btnSubmit.hideProgress(R.string.action_submit)

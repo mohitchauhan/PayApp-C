@@ -8,6 +8,6 @@ import com.payapp.data.entities.LoggedInUser
 interface IOnboardingCallbacks {
     fun openLogin()
     fun openSignup()
-    fun otpVerified(loggedInUser: LoggedInUser)
+    fun openHome(loggedInUser: LoggedInUser)
     fun showOtpVerification()
 }

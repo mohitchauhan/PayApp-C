@@ -2,13 +2,10 @@ package com.payapp.main.ui.oauth.login
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.LifecycleOwner
@@ -21,6 +18,7 @@ import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
 import com.payapp.main.R
+import com.payapp.main.afterTextChanged
 import com.payapp.main.di.PayViewModelFactory
 import com.payapp.main.ui.BaseFragment
 import com.payapp.main.ui.TitleChangeListener
@@ -62,36 +60,46 @@ class SignInFragment : BaseFragment() {
         bindProgressButton(loginButton)
         signInViewModel = ViewModelProvider(this, factory).get(SignInViewModel::class.java)
         signUpText.setOnClickListener { callbacks.openSignup() }
-        signInViewModel.loginFormState.observe(this@SignInFragment as LifecycleOwner, Observer {
-            val loginState = it ?: return@Observer
+        observeViewState()
+        observeData()
 
-            // disable login button unless both username / password is valid
-            loginButton.isEnabled = loginState.isDataValid
+        username.afterTextChanged {
+            onFormDataChanged()
+        }
 
-            if (loginState.usernameError != null) {
-                usernameInputLayout.error = getString(loginState.usernameError)
-            }else{
-                usernameInputLayout.error  = null
+        password.apply {
+            afterTextChanged {
+                onFormDataChanged()
             }
-
-            if (loginState.passwordError != null) {
-                passwordInputLayout.error = getString(loginState.passwordError)
-            }else{
-                passwordInputLayout.error = null
+            setOnEditorActionListener { _, actionId, _ ->
+                when (actionId) {
+                    EditorInfo.IME_ACTION_DONE ->
+                        signInViewModel.login(
+                            username.text.toString(),
+                            password.text.toString()
+                        )
+                }
+                false
             }
-        })
+        }
 
+        loginButton.setOnClickListener {
+            signInViewModel.login(username.text.toString(), password.text.toString())
+        }
+    }
+
+    private fun observeData() {
         signInViewModel.loginState.observe(this@SignInFragment as LifecycleOwner, Observer {
             val loginResult = it ?: return@Observer
 
-            when(loginResult){
+            when (loginResult) {
                 is Success -> {
-                   // show otp screen
+                   callbacks.openHome(loginResult.data.loggedInUser!!)
                 }
-                 is ErrorResult -> {
-                     loginButton.hideProgress(R.string.action_signin)
-                     showLoginFailed(loginResult.exception)
-                 }
+                is ErrorResult -> {
+                    loginButton.hideProgress(R.string.action_signin)
+                    showLoginFailed(loginResult.exception)
+                }
                 is Loading -> {
                     loginButton.showProgress {
                         buttonTextRes = R.string.submitting
@@ -103,36 +111,27 @@ class SignInFragment : BaseFragment() {
 
             //Complete and destroy login activity once successful
         })
+    }
 
+    private fun observeViewState() {
+        signInViewModel.loginFormState.observe(this@SignInFragment as LifecycleOwner, Observer {
+            val loginState = it ?: return@Observer
 
+            // disable login button unless both username / password is valid
+            loginButton.isEnabled = loginState.isDataValid
 
-        username.afterTextChanged {
-            onFormDataChanged()
-        }
-
-
-
-        password.apply {
-            afterTextChanged {
-                onFormDataChanged()
+            if (loginState.usernameError != null) {
+                usernameInputLayout.error = getString(loginState.usernameError)
+            } else {
+                usernameInputLayout.error = null
             }
 
-
-            setOnEditorActionListener { _, actionId, _ ->
-                when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        signInViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
-                        )
-                }
-                false
+            if (loginState.passwordError != null) {
+                passwordInputLayout.error = getString(loginState.passwordError)
+            } else {
+                passwordInputLayout.error = null
             }
-
-            loginButton.setOnClickListener {
-                signInViewModel.login(username.text.toString(), password.text.toString())
-            }
-        }
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -157,23 +156,5 @@ class SignInFragment : BaseFragment() {
         }
         Toast.makeText(activity!!.applicationContext, message, Toast.LENGTH_SHORT).show()
     }
-
-
-
-    /**
-     * Extension function to simplify setting an afterTextChanged action to EditText components.
-     */
-    fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-        this.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(editable: Editable?) {
-                afterTextChanged.invoke(editable.toString())
-            }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-        })
-    }
-
 
 }

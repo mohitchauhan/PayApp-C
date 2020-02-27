@@ -1,4 +1,4 @@
-package com.payapp.main.ui.oauth.onboarding
+package com.payapp.main.ui.oauth.di
 
 import androidx.lifecycle.ViewModel
 import com.payapp.main.di.ViewModelBuilder
@@ -6,6 +6,8 @@ import com.payapp.main.di.ViewModelKey
 import com.payapp.main.ui.oauth.OauthActivity
 import com.payapp.main.ui.oauth.login.SignInFragment
 import com.payapp.main.ui.oauth.login.SignInViewModel
+import com.payapp.main.ui.oauth.onboarding.AuthViewModel
+import com.payapp.main.ui.oauth.onboarding.OtpViewModel
 import com.payapp.main.ui.oauth.onboarding.register.OtpVerificationFragment
 import com.payapp.main.ui.oauth.onboarding.register.SignUpFragment
 import com.payapp.main.ui.oauth.onboarding.register.SignUpViewModel

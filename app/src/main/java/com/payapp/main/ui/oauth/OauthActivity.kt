@@ -30,13 +30,15 @@ class OauthActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_oauth)
         setSupportActionBar(toolbar)
+        title = ""
+
         authViewModel =  ViewModelProvider(this, factory).get(AuthViewModel::class.java)
         authViewModel.authStateLiveData.observe(this, Observer { data ->
             when(data){
                 is ShowLogin -> supportFragmentManager.beginTransaction().replace(R.id.container, SignInFragment.newInstance()).commit()
                 is ShowRegister -> supportFragmentManager.beginTransaction().replace(R.id.container, SignUpFragment.newInstance()).commit()
                 is ShowHome -> {startActivity(Intent(this, HomeActivity::class.java)) } // take me to home
-                is ShowOtpVerification -> supportFragmentManager.beginTransaction().replace(R.id.container, OtpVerificationFragment.newInstance()).commit()
+                is ShowOtpVerification -> supportFragmentManager.beginTransaction().replace(R.id.container, OtpVerificationFragment.newInstance()).addToBackStack(null).commit()
 
             }
         })
@@ -50,7 +52,7 @@ class OauthActivity : BaseActivity(),
         authViewModel.showRegister()
     }
 
-    override fun otpVerified(loggedInUser: LoggedInUser) {
+    override fun openHome(loggedInUser: LoggedInUser) {
         authViewModel.showHome(loggedInUser)
     }
 

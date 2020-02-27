@@ -1,7 +1,7 @@
 package com.payapp.main.di
 
 import com.payapp.main.PayApp
-import com.payapp.main.ui.oauth.onboarding.OnboardingDiModule
+import com.payapp.main.ui.oauth.di.OnboardingDiModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

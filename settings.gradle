@@ -1,2 +1,3 @@
-include ':app', ':core', ':data'
+include ':app', ':core', ':data', ':domain'
 rootProject.name='PayApp'
+include ':and-data'

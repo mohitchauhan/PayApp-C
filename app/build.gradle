@@ -49,11 +49,16 @@ dependencies {
     implementation Libs.Kotlin.reflect
 
     implementation project(":core")
+    implementation project(":data")
+    implementation project(":domain")
+    implementation project(":and-data")
+
 
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.constraintlayout
     implementation Libs.AndroidX.recyclerview
     implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.designSupport
 
 
     implementation Libs.RxJava.rxJava
@@ -73,6 +78,10 @@ dependencies {
 
     implementation Libs.Dagger.androidSupport
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt Libs.Dagger.compiler
     kapt Libs.Dagger.androidProcessor
 
@@ -85,6 +94,10 @@ dependencies {
     implementation Libs.PlayServices.location
 
     implementation Libs.Retrofit.gsonConverter
+
+
+    implementation Libs.ViewLibs.otpView
+    implementation Libs.ViewLibs.progressButton
 
     // Test dependencies
 

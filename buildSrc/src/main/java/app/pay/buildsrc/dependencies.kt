@@ -23,15 +23,17 @@ object Libs {
     }
 
     object Coroutines {
-        private const val version = "1.2.1"
+        private const val version = "1.3.2"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
     }
 
     object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.1.0-beta01"
-        const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0-alpha06"
+        const val appcompat = "androidx.appcompat:appcompat:1.1.0"
+        const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
+        const val designSupport = "com.google.android.material:material:1.1.0"
+
 
         object Fragment {
             private const val version = "1.1.0-beta01"
@@ -125,6 +127,13 @@ object Libs {
 
     object jUnit{
         private const val junit = "junit:junit:4.12"
+
+    }
+
+    object ViewLibs{
+        private const val otpView =  "com.github.mukeshsolanki:android-otpview-pinview:2.1.0"
+        private const val progressButton =   "com.github.razir.progressbutton:progressbutton:2.0.0"
+
 
     }
 

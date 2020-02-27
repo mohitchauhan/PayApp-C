@@ -1,7 +1,6 @@
 package com.payapp.main.di
 
 import android.app.Application
-import com.payapp.main.initializers.RxAndroidInitializer
 import com.payapp.main.initializers.AppInitializer
 import com.payapp.main.PayApp
 import dagger.Binds

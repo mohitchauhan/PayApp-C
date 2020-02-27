@@ -25,7 +25,6 @@ object Libs {
     object Coroutines {
         private const val version = "1.3.2"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
-        const val rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$version"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
     }
 
@@ -55,11 +54,6 @@ object Libs {
 
     }
 
-    object RxJava {
-        const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.10"
-        const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
-        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
-    }
 
     object Dagger {
         private const val version = "2.23.2"

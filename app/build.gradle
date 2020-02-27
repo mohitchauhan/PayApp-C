@@ -61,18 +61,12 @@ dependencies {
     implementation Libs.AndroidX.designSupport
 
 
-    implementation Libs.RxJava.rxJava
-    implementation Libs.RxJava.rxKotlin
-    implementation Libs.RxJava.rxAndroid
-
-
     implementation Libs.AndroidX.Lifecycle.viewmodel
     implementation Libs.AndroidX.Lifecycle.extensions
     implementation Libs.AndroidX.multidex
 
 
     implementation Libs.Coroutines.core
-    implementation Libs.Coroutines.rx2
     implementation Libs.Coroutines.android
 
 

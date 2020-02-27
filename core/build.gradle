@@ -1,15 +1,37 @@
 import app.pay.buildsrc.Libs
 
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
 
 dependencies {
     api Libs.Kotlin.stdlib
-
     api Libs.Coroutines.core
-    api Libs.Coroutines.rx2
-
-    api Libs.Dagger.dagger
-
-    implementation Libs.Retrofit.retrofit
+    implementation Libs.Kotlin.reflect
+    api Libs.timber
 
 }

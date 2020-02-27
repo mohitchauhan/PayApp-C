@@ -97,7 +97,7 @@ class SignInFragment : BaseFragment() {
                    callbacks.openHome(loginResult.data.loggedInUser!!)
                 }
                 is ErrorResult -> {
-                    loginButton.hideProgress(R.string.action_signin)
+                    loginButton.hideProgress(R.string.action_btn_signIn)
                     showLoginFailed(loginResult.exception)
                 }
                 is Loading -> {

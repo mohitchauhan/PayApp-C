@@ -31,7 +31,7 @@ class UserLogin @Inject constructor(private val loginRepository : LoginRepositor
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            return ErrorResult(PayAPIException("", e), "Error occurred")
+            return ErrorResult(e, "Error occurred")
         }
     }
 

@@ -28,7 +28,7 @@ class UserSignup @Inject constructor(private val signupRepository : SignupReposi
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            return ErrorResult(PayAPIException("", e), "Error occurred")
+            return ErrorResult( e, "Error occurred")
         }
     }
 

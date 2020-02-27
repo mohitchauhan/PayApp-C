@@ -58,7 +58,7 @@ class SignUpFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         bindProgressButton(btnSubmit)
         signUpViewModel = ViewModelProvider(this, factory).get(SignUpViewModel::class.java)
-        signInText.setOnClickListener { callbacks.openSignup() }
+        signInText.setOnClickListener { callbacks.openLogin() }
 
         observeViewState()
         observeData()

@@ -32,7 +32,7 @@ class VerifyOtp @Inject constructor(private val signupRepository : SignupReposit
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            return ErrorResult(PayAPIException("", e), "Error occurred")
+            return ErrorResult(e, "Error occurred")
         }
     }
 
